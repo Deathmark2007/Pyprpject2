@@ -4,11 +4,13 @@ class ship(pygame.sprite.Sprite):
     def __init__(self):
         # the ship image (we're using images)
         self.image = pygame.image.load('ship.bmp')
+        self.angle = 0
     def turn_right(self):
         #detecting the keypress
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT: 
                 #we'll use rotozoom to rotate the ship.
+                self.angle += 1
 
 pygame.init()
 clock = pygame.time.Clock()
