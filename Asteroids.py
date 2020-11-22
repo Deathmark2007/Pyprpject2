@@ -61,8 +61,9 @@ player_group.add(player)
 
 asteroid1 = asteroids('asteroids.png',4,4, player_group)
 asteroid2 = asteroids('asteroids.png', 3, 2, player_group)
+asteroid3 = asteroids('asteroids.png',4, 3, player_group)
 asteroid_sprites = pygame.sprite.Group()
-asteroid_sprites.add(asteroid1, asteroid2)
+asteroid_sprites.add(asteroid1, asteroid2, asteroid3)
 
 
 while True:
@@ -78,6 +79,7 @@ while True:
     asteroid_sprites.draw(screen)
     asteroid1.update()
     asteroid2.update()
+    asteroid3.update()
 
     pygame.display.flip()
     clock.tick(120)
