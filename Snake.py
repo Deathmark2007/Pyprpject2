@@ -1,7 +1,8 @@
 import pygame, sys, random
 from SnakePart import snake, apple
-pygame.init()
 
+LIGHTGREEN = (30, 255, 0)
+RED =(255, 0, 0)
 GREEN = (20, 255, 140)
 GREY = (210, 210 ,210)
 WHITE = (255, 255, 255)
@@ -9,24 +10,31 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 PURPLE = (255, 0, 255)
 
-randomX = random.randrange(10, 390, 5)
-randomY = random.randrange(10, 490, 5)
+class body(pygame.sprite.Sprite):
+    def __init__(self, food, head):
+        super().__init__()
+        self.list = []
+        self.food = food
+        self.head = head
+    def create_segment():
+        new_segment
+  
+    def add(self):
+        if self.head.colliderect(self.food):
+            self.list.append(create_segment())
 
-#font = pygame.font.Font('freesansbold.ttf', 20)
-#text = font.render("Hi", True, BLACK, GREEN)
-#textRect = text.get_rect()  
-#textRect.center = (300, 20) 
+randomX = random.randrange(10, 580, 5)
+randomY = random.randrange(10, 580, 5)
 
-SCREENWIDTH=400
-SCREENHEIGHT=500
- 
-size = (SCREENWIDTH, SCREENHEIGHT)
-screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Snake")
+pygame.init()
+clock = pygame.time.Clock()
+w = 600
+h = 600
+screen = pygame.display.set_mode([w, h])
 
 all_sprites_list = pygame.sprite.Group()
  
-snake = snake(GREEN, 20, 20)
+snake = snake(LIGHTGREEN, 20, 20)
 snake.rect.x = 10
 snake.rect.y = 10
 
@@ -43,14 +51,9 @@ while engine:
     for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 engine=False
-            elif event.type==pygame.KEYDOWN:
-                if event.key==pygame.K_x:
-                     engine=False
-    
 
     all_sprites_list.update()
     screen.fill(BLACK)
-    #screen.blit(text, textRect) 
     all_sprites_list.draw(screen)
 
     pygame.display.flip()
