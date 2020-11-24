@@ -11,7 +11,6 @@ class ship(pygame.sprite.Sprite):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 self.angle += 1
-                print('right')
 
             if event.key == pygame.K_LEFT:
                 self.angle -= 1
@@ -19,6 +18,18 @@ class ship(pygame.sprite.Sprite):
 
     def update(self):
         self.turn()
+
+class bullet(pygame.sprite.Sprite)
+    def __init__(self, image, ship):
+        super.__init__()
+        self.image = pygame.image.load
+        self.rect = self.image.get_rect(center = self.ship.rect.pos)
+        self.ship = ship
+    def load(self):
+        self.rect.center = self.ship.rect.center
+    def update 
+        
+
 
 class asteroids(pygame.sprite.Sprite):
     def __init__(self, image, x_speed, y_speed, ship):
@@ -28,7 +39,7 @@ class asteroids(pygame.sprite.Sprite):
         self.x_speed = x_speed * random.choice((-1.5, -1,-0.5, 0.5, 1, 1.5))
         self.y_speed = y_speed * random.choice((-1,-0.5, 0.5, 1))
         self.ship = ship
-
+        
 
     def move(self):
         self.rect.x += self.x_speed
