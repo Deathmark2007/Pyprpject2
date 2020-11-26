@@ -90,17 +90,19 @@ class game_manager:
         self.player = player
         self.opponent = opponent
         self.ball = ball
+        self.player_score = 0
+        self.opponent_score = 0
+
 
     def score(self):
         if self.ball.rect.left <= 0:
             self.ball.rect.center = (300, 300)
-            self.opponent.rect.y = 300
-            self.player.rect.y = 300
+            self.player_score += 1
 
         if self.ball.rect.right >= w:
             self.ball.rect.center = (300, 300)
-            self.opponent.rect.y = 300
-            self.player.rect.y = 300
+            self.opponent_score += 1
+
 
     def update(self):
         self.score()
@@ -126,6 +128,7 @@ h = 600
 screen = pygame.display.set_mode(([w, h]))
 bg_color = pygame.Color('#2F373F')
 light_grey = (200, 200, 200)
+text_font = pygame.font.Font("freesansbold.ttf", 32)
 
 while True:
     for event in pygame.event.get():
@@ -134,6 +137,12 @@ while True:
             sys.exit()
     screen.fill(bg_color)
     pygame.draw.aaline(screen, light_grey, (w / 2, 0), (w / 2, h))
+
+    player_text = text_font.render(f"{manager.player_score}", False, light_grey)
+    screen.blit(player_text, (320, 300))
+
+    opponent_text = text_font.render(f"{manager.opponent_score}", False, light_grey)
+    screen.blit(opponent_text, (260, 300))
 
     ball_group.draw(screen)
     paddle_group.draw(screen)
